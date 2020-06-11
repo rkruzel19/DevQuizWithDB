@@ -1,0 +1,49 @@
+.root{
+    -fx-background-color: blue;
+}
+
+#leftMenu{
+    -fx-background-color: yellow;
+    -fx-min-width: 300px;
+    -fx-spacing: 200px;
+    -fx-alignment: center;
+}
+
+#centerContent{
+    -fx-spacing: 150px;
+    -fx-alignment: center;
+}
+
+#welcomeMessage{
+    -fx-alignment: center;
+}
+
+.label{
+    -fx-font-size: 40px;
+    -fx-text-alignment: center;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+}
+
+#startQuizButton{
+    -fx-background-color: purple;
+    -fx-font-size: 30px;
+    -fx-padding: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-width: 5px;
+    -fx-border-color: black;
+}
+
+.leftButtons{
+    -fx-background-color: red;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-width: 5px;
+    -fx-border-color: black;
+}

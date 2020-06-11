@@ -1,0 +1,22 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="app.controllers.QuizSelectionController">
+    <center>
+        <VBox id="quizDetails">
+            <VBox  id="selectionLabels">
+                <Label text="Java"/>
+                <Label fx:id="totalQsInDatabase"/>
+            </VBox>
+            <VBox id="questionsInput">
+                <Label text="How many questions?"/>
+                <HBox id="inputField">
+                    <TextField fx:id="numberOfQuestions"/>
+                    <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
+                </HBox>
+                <Button text="All Questions" onAction="#beginQuizAllQuestions"/>
+            </VBox>
+            <Button fx:id="homeButton" text="Home" onAction="#returnHome"/>
+        </VBox>
+    </center>
+</BorderPane>

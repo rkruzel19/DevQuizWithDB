@@ -1,0 +1,10 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="app.controllers.EndOfQuizController">
+    <VBox id="endLabels">
+        <Label text="You've finished the Quiz"/>
+        <Label fx:id="userScore" text="Your score is"/>
+    </VBox>
+    <Button fx:id="homeButton" text="Home" onAction="#goHome"/>
+</VBox>

@@ -1,0 +1,7 @@
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:controller="app.controllers.SampleDBController" xmlns:fx="http://javafx.com/fxml" >
+    <center>
+        <Button text="TEST DB" onAction="#testDBConnection"/>
+    </center>
+</BorderPane>

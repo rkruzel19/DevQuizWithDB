@@ -1,0 +1,18 @@
+.root{
+    -fx-background-color: green;
+    -fx-alignment: center;
+}
+
+.label{
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+}
+
+#endLabels{
+    -fx-alignment: center;
+    -fx-padding: 100px;
+}
+
+#homeButton{
+    -fx-font-size: 35px;
+}
