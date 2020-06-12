@@ -5,20 +5,31 @@ import java.util.List;
 
 public class Question {
 
+    private int id;
     private String query;
     private String correctAnswer;
     private List<String> answers;
 
     public Question() {
+        id = 0;
         query = "";
         answers = new ArrayList<>();
         correctAnswer = "";
     }
 
-    public Question(String query, List<String> answers, String correctAnswer) {
+    public Question(int id, String query, List<String> answers, String correctAnswer) {
+        this.id = id;
         this.query = query;
         this.correctAnswer = correctAnswer;
         this.answers = answers;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getQuery() {
@@ -48,9 +59,10 @@ public class Question {
     @Override
     public String toString() {
         return "Question{" +
-                "query='" + query + '\'' +
+                "id=" + id +
+                ", query='" + query + '\'' +
+                ", correctAnswer='" + correctAnswer + '\'' +
                 ", answers=" + answers +
-                ", correctAnswer=" + correctAnswer +
                 '}';
     }
 }

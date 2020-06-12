@@ -6,7 +6,7 @@
     <left>
         <VBox id="leftMenu">
             <Button styleClass="leftButtons" text="Add Question" />
-            <Button text="TEST DB" onAction="#testDBConnection"/>
+            <Button styleClass="leftButtons" text="TEST DB" onAction="#testDBConnection"/>
         </VBox>
     </left>
     <center>

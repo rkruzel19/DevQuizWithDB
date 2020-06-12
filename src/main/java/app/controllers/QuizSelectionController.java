@@ -1,9 +1,9 @@
 package app.controllers;
 
 import app.dao.Question;
-import app.dao.QuestionPool;
 import app.services.QuizQuestionsGenerator;
 import app.services.SceneBuilder;
+import app.services.SqlCaller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -32,7 +32,7 @@ public class QuizSelectionController implements Initializable, Controller {
 
     public void beginQuiz() throws Exception{
         int amount = receiveInput();
-        populateQuizQuestions(amount);
+//        populateQuizQuestions(amount);
         sb.setNewSceneWithParameters((Stage)beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
     }
 
@@ -44,12 +44,12 @@ public class QuizSelectionController implements Initializable, Controller {
         return Integer.parseInt(numberOfQuestions.getText());
     }
 
-    public void populateQuizQuestions(int numberOfQuestions){
-        quizQuestions = QuizQuestionsGenerator.generateXQuestions(numberOfQuestions);
-    }
+//    public void populateQuizQuestions(int numberOfQuestions){
+//        quizQuestions = QuizQuestionsGenerator.generateXQuestions(numberOfQuestions);
+//    }
 
     public void beginQuizAllQuestions() throws Exception{
-        quizQuestions = QuizQuestionsGenerator.generateEntireQuestionList();
+        quizQuestions = SqlCaller.getAllQuestions();
         sb.setNewSceneWithParameters((Stage)beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
     }
 
@@ -57,7 +57,7 @@ public class QuizSelectionController implements Initializable, Controller {
     public void initialize(URL location, ResourceBundle resources) {
         sb = new SceneBuilder();
         quizQuestions = new ArrayList<>();
-        totalQsInDatabase.setText(QuestionPool.getQuestions().size() + " questions available");
+//        totalQsInDatabase.setText(QuestionPool.getQuestions().size() + " questions available");
     }
 
     @Override
