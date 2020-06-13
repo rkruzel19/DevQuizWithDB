@@ -74,6 +74,34 @@ public class SqlCaller {
         return choices;
     }
 
+    public static void addQuestionToDB(int id, String question, String correctAnswer, List<String> choices){
+
+        try {
+            String sql = "INSERT INTO quizdb.question (`id`, `question`, `correctAnswer`, `choicesId`) VALUES ('" + id + "', '" + question + "', '" + correctAnswer + "', '" + id + "')";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            int result = preparedStatement.executeUpdate();
+            addQuestionChoicesToDB(id, choices);
+//            sql = "INSERT INTO quizdb.choices (`id`, `choice1`, `choice2`, `choice3`, `choice4`) VALUES ('" + id + "', '" + choices.get(0) + "', '" + choices.get(1) + "', '" + choices.get(2) + "', '" + choices.get(3) + "')";
+//            preparedStatement = con.prepareStatement(sql);
+//            result = preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    public static void addQuestionChoicesToDB(int id, List<String> choices){
+        try {
+            String sql = "INSERT INTO quizdb.choices (`id`, `choice1`, `choice2`, `choice3`, `choice4`) VALUES ('" + id + "', '" + choices.get(0) + "', '" + choices.get(1) + "', '" + choices.get(2) + "', '" + choices.get(3) + "')";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            int result = preparedStatement.executeUpdate();
+        } catch (Exception exception){
+            exception.printStackTrace();
+        }
+
+    }
+
     public static int getDBSize(){
         String sql = "select count(*) from quizdb.question";
         int dbSize = 0;

@@ -13,15 +13,17 @@ public class WelcomeController implements Initializable, Controller {
 
     @FXML
     private Button startQuizButton;
+    @FXML
+    private Button addQuestionButton;
+
     public SceneBuilder sb;
 
     public void startQuiz() throws Exception{
         sb.setNewScene((Stage)startQuizButton.getScene().getWindow(), "quizSelection");
-
     }
 
-    public void testDBConnection() {
-        SqlCaller.getAllQuestions();
+    public void addQuestionToDB() throws Exception{
+        sb.setNewScene((Stage)addQuestionButton.getScene().getWindow(), "addQuestion");
     }
 
     @Override

@@ -5,8 +5,8 @@
 <BorderPane fx:controller="app.controllers.WelcomeController" xmlns:fx="http://javafx.com/fxml">
     <left>
         <VBox id="leftMenu">
-            <Button styleClass="leftButtons" text="Add Question" />
-            <Button styleClass="leftButtons" text="TEST DB" onAction="#testDBConnection"/>
+            <Button fx:id="addQuestionButton" styleClass="leftButtons" text="Add Question" onAction="#addQuestionToDB" />
+            <Button styleClass="leftButtons" text="TEST DB" />
         </VBox>
     </left>
     <center>

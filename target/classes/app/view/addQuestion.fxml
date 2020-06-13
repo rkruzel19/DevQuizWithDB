@@ -1,0 +1,40 @@
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane fx:controller="app.controllers.AddQuestionController" xmlns:fx="http://javafx.com/fxml">
+    <center>
+        <VBox id="centerContent">
+            <Label text="Enter Question Here"/>
+            <TextField fx:id="questionString" />
+            <HBox styleClass="choices">
+                <RadioButton fx:id="answer1">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="correctAnswerChoice" />
+                    </toggleGroup>
+                </RadioButton>
+                <TextField fx:id="answerString1" promptText="answer choice 1"/>
+            </HBox>
+            <HBox styleClass="choices">
+                <RadioButton fx:id="answer2" toggleGroup="$correctAnswerChoice"/>
+                <TextField fx:id="answerString2" promptText="answer choice 2"/>
+            </HBox>
+            <HBox styleClass="choices">
+                <RadioButton fx:id="answer3" toggleGroup="$correctAnswerChoice"/>
+                <TextField fx:id="answerString3" promptText="answer choice 3"/>
+            </HBox>
+            <HBox styleClass="choices">
+                <RadioButton fx:id="answer4" toggleGroup="$correctAnswerChoice"/>
+                <TextField fx:id="answerString4" promptText="answer choice 4"/>
+            </HBox>
+            <Button fx:id="submitQuestionButton" text="Submit Question" onAction="#submitQuestionToDB"/>
+            <Button fx:id="cancelButton" text="Cancel" onAction="#backToHome"/>
+        </VBox>
+    </center>
+</BorderPane>

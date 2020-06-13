@@ -1,0 +1,21 @@
+.root{
+    -fx-background-color: red;
+}
+
+#centerContent{
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+.text-field{
+    -fx-max-width: 400px;
+}
+
+.choices{
+    -fx-alignment: center;
+}
+
+.label{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
