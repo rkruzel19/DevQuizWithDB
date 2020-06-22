@@ -1,7 +1,6 @@
 package app.services;
 
 import app.dao.Question;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,13 +41,9 @@ public class SqlCaller {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 questionToAdd.setId(questionId);
-                System.out.println(questionToAdd.getId());
                 questionToAdd.setQuery(resultSet.getObject("question").toString());
-                System.out.println(questionToAdd.getQuery());
                 questionToAdd.setCorrectAnswer(resultSet.getObject("correctAnswer").toString());
-                System.out.println(questionToAdd.getCorrectAnswer());
                 questionToAdd.setAnswers(getQuestionChoices(questionId));
-                System.out.println(questionToAdd.getAnswers());
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -80,11 +75,8 @@ public class SqlCaller {
             String sql = "INSERT INTO quizdb.question (`id`, `question`, `correctAnswer`, `choicesId`) VALUES ('" + id + "', '" + question + "', '" + correctAnswer + "', '" + id + "')";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             int result = preparedStatement.executeUpdate();
+            con.close();
             addQuestionChoicesToDB(id, choices);
-//            sql = "INSERT INTO quizdb.choices (`id`, `choice1`, `choice2`, `choice3`, `choice4`) VALUES ('" + id + "', '" + choices.get(0) + "', '" + choices.get(1) + "', '" + choices.get(2) + "', '" + choices.get(3) + "')";
-//            preparedStatement = con.prepareStatement(sql);
-//            result = preparedStatement.executeUpdate();
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -94,6 +86,7 @@ public class SqlCaller {
     public static void addQuestionChoicesToDB(int id, List<String> choices){
         try {
             String sql = "INSERT INTO quizdb.choices (`id`, `choice1`, `choice2`, `choice3`, `choice4`) VALUES ('" + id + "', '" + choices.get(0) + "', '" + choices.get(1) + "', '" + choices.get(2) + "', '" + choices.get(3) + "')";
+            con = ConnectionUtil.conDB();
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             int result = preparedStatement.executeUpdate();
         } catch (Exception exception){

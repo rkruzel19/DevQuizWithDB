@@ -58,7 +58,6 @@ public class AddQuestionController implements Initializable, Controller {
         choices.add(answerString2.getText());
         choices.add(answerString3.getText());
         choices.add(answerString4.getText());
-//        Question newQuestion = new Question(questionId, question, choices, correctAnswer);
         SqlCaller.addQuestionToDB(questionId, question, correctAnswer, choices);
         System.out.println("Id = " + questionId + "\nQuestion = " + question + "\nCorrect answer = " + correctAnswer + "\nChoices = " + choices);
     }

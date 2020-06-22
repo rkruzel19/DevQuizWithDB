@@ -1,0 +1,4 @@
+log created 6/22/20
+
+- MVP done. MySQL database connected. Can add question and take quiz
+  with any # of questions from 1 - size of db. No error handling.
