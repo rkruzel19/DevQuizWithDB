@@ -29,6 +29,10 @@
 }
 
 #beginQuizButton{
+    -fx-font-size: 20px;
+}
+
+#verifyInputButton{
     -fx-font-size: 17px;
 }
 

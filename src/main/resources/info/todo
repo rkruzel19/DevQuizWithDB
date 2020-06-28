@@ -1,6 +1,4 @@
-- handle input errors from quizSelection page. Currently you can type
-  anything in. Needs to be able to accept 1 - size of db and correctly
-  handle everything else.
+- change quizSelection error handling from sout to alert box
 
 - refactor variable names. Use of question(class), query, question string,
   etc. overlap. Choose better name to use throughout app and db for
@@ -9,3 +7,18 @@
 - add comments to everything, help to understand the flow
 
 - check classes to look for optimization
+
+
+
+
+***************************************************
+                       DONE
+***************************************************
+
+- handle input errors from quizSelection page. Currently you can type
+  anything in. Needs to be able to accept 1 - size of db and correctly
+  handle everything else.
+
+
+
+

@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.dao.Question;
+import app.services.InputHandler;
 import app.services.QuizQuestionsGenerator;
 import app.services.SceneBuilder;
 import app.services.SqlCaller;
@@ -10,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +29,17 @@ public class QuizSelectionController implements Initializable, Controller {
     @FXML
     public Label totalQsInDatabase;
     SceneBuilder sb;
+    int amount = 0;
+
 
     public void beginQuiz() throws Exception{
-        int amount = receiveInput();
-        populateQuizQuestions(amount);
-        sb.setNewSceneWithParameters((Stage)beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
+//        int amount = receiveInput();
+        if(amount == 0){
+            System.out.println("no valid input (begin)");
+        } else {
+            populateQuizQuestions(amount);
+            sb.setNewSceneWithParameters((Stage) beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
+        }
     }
 
     public void returnHome() throws Exception{
@@ -42,6 +48,14 @@ public class QuizSelectionController implements Initializable, Controller {
 
     public int receiveInput(){
         return Integer.parseInt(numberOfQuestions.getText());
+    }
+
+    public void verifyInput(){
+        if(InputHandler.verifyNumberOfQs(numberOfQuestions.getText())){
+            amount = receiveInput();
+        } else {
+            System.out.println("no valid input (verifyInput)");
+        }
     }
 
     public void populateQuizQuestions(int numberOfQuestions){
