@@ -30,7 +30,14 @@
     -fx-font-weight: bold;
 }
 
+#errorLabel{
+    -fx-text-fill: red;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
 #submitButton{
-    -fx-padding: 60px;
+    -fx-padding: 30px;
     -fx-font-size: 30px;
 }

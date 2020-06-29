@@ -14,6 +14,7 @@
                     <TextField fx:id="numberOfQuestions"/>
                     <Button id="verifyInputButton" text="Verify Input" onAction="#verifyInput"/>
                 </HBox>
+                <Label fx:id="errorLabel"/>
                 <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
                 <Button text="All Questions" onAction="#beginQuizAllQuestions"/>
             </VBox>

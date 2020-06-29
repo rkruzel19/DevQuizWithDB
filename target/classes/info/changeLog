@@ -2,3 +2,8 @@ log created 6/22/20
 
 - MVP done. MySQL database connected. Can add question and take quiz
   with any # of questions from 1 - size of db. No error handling.
+
+6/28/20
+- created InputHandler class to handle user errors.
+- handled input in quizSelection. Created label that notifies user if input is good or bad
+- created amount variable in quizSelection to make verifying input possible.

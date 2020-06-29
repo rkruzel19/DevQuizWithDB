@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,14 +29,16 @@ public class QuizSelectionController implements Initializable, Controller {
     public TextField numberOfQuestions;
     @FXML
     public Label totalQsInDatabase;
+    @FXML
+    public Label errorLabel;
     SceneBuilder sb;
     int amount = 0;
 
 
     public void beginQuiz() throws Exception{
-//        int amount = receiveInput();
         if(amount == 0){
-            System.out.println("no valid input (begin)");
+//            System.out.println("no valid input (begin)");
+            errorLabel.setText("Must enter valid input (1-" + SqlCaller.getDBSize() + ") and click verify input");
         } else {
             populateQuizQuestions(amount);
             sb.setNewSceneWithParameters((Stage) beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
@@ -53,8 +56,13 @@ public class QuizSelectionController implements Initializable, Controller {
     public void verifyInput(){
         if(InputHandler.verifyNumberOfQs(numberOfQuestions.getText())){
             amount = receiveInput();
+            errorLabel.setText(amount + " is valid input");
+            errorLabel.setTextFill(Color.GREEN);
         } else {
-            System.out.println("no valid input (verifyInput)");
+//            System.out.println("no valid input (verifyInput)");
+            errorLabel.setText("Must enter valid input (1-" + SqlCaller.getDBSize() + ") and click verify input");
+            amount = 0;
+            errorLabel.setTextFill(Color.RED);
         }
     }
 

@@ -38,6 +38,8 @@ public class QuizController implements Initializable, Controller {
     Label numberOfQuestions;
     @FXML
     ToggleGroup answerList;
+    @FXML
+    Label errorLabel;
 
     Question currentQuestion;
     int correctAnswers;
@@ -51,18 +53,23 @@ public class QuizController implements Initializable, Controller {
     }
 
     public void submitAnswerButton() throws Exception{
-        updateScore();
-        if(questionsAnswered == quizList.size()){
-            // games over
-            sb.setNewSceneWithParameters((Stage)submitAnswerButton.getScene().getWindow(), "endOfQuiz", score);
+        try {
+            updateScore();
+            if (questionsAnswered == quizList.size()) {
+                // games over
+                sb.setNewSceneWithParameters((Stage) submitAnswerButton.getScene().getWindow(), "endOfQuiz", score);
 
-        } else {
-            // continue to next question
-            currentQuestionNumber++;
-            currentQuestion = quizList.get(currentQuestionNumber);
-            setQuestionNumber(currentQuestionNumber);
-            setQuestionText(currentQuestion.getQuery());
-            setChoices(currentQuestion.getAnswers());
+            } else {
+                // continue to next question
+                currentQuestionNumber++;
+                currentQuestion = quizList.get(currentQuestionNumber);
+                setQuestionNumber(currentQuestionNumber);
+                setQuestionText(currentQuestion.getQuery());
+                setChoices(currentQuestion.getAnswers());
+                errorLabel.setText("");
+            }
+        } catch (Exception e){
+            errorLabel.setText("You must choose an option");
         }
     }
 

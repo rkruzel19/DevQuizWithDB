@@ -20,12 +20,13 @@
 #questionsInput{
     -fx-alignment: center;
     -fx-font-size: 30px;
-    -fx-spacing: 30px;
+    /*-fx-spacing: 30px;*/
 }
 
 #inputField{
     -fx-alignment: center;
     -fx-spacing: 10px;
+    -fx-padding: 15px;
 }
 
 #beginQuizButton{
@@ -38,4 +39,11 @@
 
 #homeButton{
     -fx-font-size: 20px;
+}
+
+#errorLabel{
+    -fx-font-size: 20px;
+    -fx-text-fill: red;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
 }

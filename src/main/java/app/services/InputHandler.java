@@ -11,7 +11,7 @@ public class InputHandler {
                 return false;
             }
         } catch (NumberFormatException nfe){
-            System.out.println("not a number");
+//            System.out.println("not a number");
             return false;
         }
     }

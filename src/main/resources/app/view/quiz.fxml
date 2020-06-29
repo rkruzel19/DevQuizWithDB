@@ -25,6 +25,7 @@
             <RadioButton fx:id="option2" toggleGroup="$answerList" />
             <RadioButton fx:id="option3" toggleGroup="$answerList" />
             <RadioButton fx:id="option4" toggleGroup="$answerList" />
+            <Label fx:id="errorLabel"/>
             <StackPane id="submitButton">
                 <Button fx:id="submitAnswerButton" text="Submit" onAction="#submitAnswerButton"/>
             </StackPane>
