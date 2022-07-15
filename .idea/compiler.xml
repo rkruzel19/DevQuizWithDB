@@ -20,7 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DevQuizWithDB" target="8" />
+      <module name="DevQuizWithDB" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
