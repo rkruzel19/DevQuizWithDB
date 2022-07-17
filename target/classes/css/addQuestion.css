@@ -13,7 +13,12 @@
 
 .choices{
     -fx-alignment: center;
+    -fx-spacing: 10px;
 }
+
+/*.radio-button .radio{
+    -fx-background-color: blue;
+}*/
 
 .label{
     -fx-font-size: 20px;

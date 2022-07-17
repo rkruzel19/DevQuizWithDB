@@ -5,18 +5,18 @@
     <center>
         <VBox id="quizDetails">
             <VBox  id="selectionLabels">
-                <Label text="Java"/>
                 <Label fx:id="totalQsInDatabase"/>
             </VBox>
             <VBox id="questionsInput">
                 <Label text="How many questions?"/>
                 <HBox id="inputField">
                     <TextField fx:id="numberOfQuestions"/>
-                    <Button id="verifyInputButton" text="Verify Input" onAction="#verifyInput"/>
                 </HBox>
                 <Label fx:id="errorLabel"/>
-                <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
-                <Button text="All Questions" onAction="#beginQuizAllQuestions"/>
+                <VBox id="startButtons">
+                    <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
+                    <Button text="All Questions" onAction="#beginQuizAllQuestions"/>
+                </VBox>
             </VBox>
             <Button fx:id="homeButton" text="Home" onAction="#returnHome"/>
         </VBox>

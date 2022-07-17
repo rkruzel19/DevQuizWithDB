@@ -4,10 +4,8 @@
 <BorderPane fx:controller="app.controllers.QuizController" xmlns:fx="http://javafx.com/fxml">
     <left>
         <VBox id="quizLeft">
-            <Label text="Java" />
             <Label fx:id="numberOfQuestions" />
             <Label fx:id="score" />
-            <Label text="Time taken: 2:34" />
         </VBox>
     </left>
     <center>
@@ -29,8 +27,10 @@
             <StackPane id="submitButton">
                 <Button fx:id="submitAnswerButton" text="Submit" onAction="#submitAnswerButton"/>
             </StackPane>
-            <Button text="test" onAction="#printQuestions"/>
-            <Button fx:id="homeButton" text="home" onAction="#backToWelcome"/>
+            <HBox id="bottomBtns">
+                <Button text="test" onAction="#printQuestions"/>
+                <Button fx:id="homeButton" text="home" onAction="#backToWelcome"/>
+            </HBox>
         </VBox>
     </center>
 

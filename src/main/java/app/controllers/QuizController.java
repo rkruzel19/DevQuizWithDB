@@ -104,6 +104,7 @@ public class QuizController implements Initializable, Controller {
         }
         questionsAnswered++;
         setScore();
+        answerList.selectToggle(null);
     }
 
     public void printQuestions(){

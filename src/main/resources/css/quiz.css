@@ -9,6 +9,25 @@
     -fx-min-width: 300px;
 }
 
+#bottomBtns{
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: #000;
+    -fx-background-color: white;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+
+.radio-button .dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 8px;
+}
+
 .label{
     -fx-text-fill: #fea2ff;
     -fx-font-weight: bold;

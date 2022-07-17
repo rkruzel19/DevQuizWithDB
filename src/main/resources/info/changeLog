@@ -12,3 +12,9 @@ log created 6/22/20
 7/16/22
 - In the Add Question page, on submission now clears all text fields, the radio toggle, and prompts the
   user that the question has been submitted.
+
+7/17/22
+- Got all specific tasks done from todo list!!!
+- Quiz selection page now verifies input on Begin Quiz
+- Smaller radios on Quiz page
+- Space between radios and text box on Add Question page

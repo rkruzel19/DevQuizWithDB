@@ -17,6 +17,11 @@
     -fx-font-size: 40px;
 }
 
+#startButtons{
+    -fx-spacing: 15px;
+    -fx-alignment: center;
+}
+
 #questionsInput{
     -fx-alignment: center;
     -fx-font-size: 30px;
