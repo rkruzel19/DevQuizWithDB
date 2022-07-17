@@ -5,16 +5,12 @@ import app.services.SceneBuilder;
 import app.services.SqlCaller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class AddQuestionController implements Initializable, Controller {
 
@@ -54,14 +50,27 @@ public class AddQuestionController implements Initializable, Controller {
         String question = questionString.getText();
         String correctAnswer = getCorrectAnswer();
         List<String> choices = new ArrayList<>();
-        choices.add(answerString1.getText());
-        choices.add(answerString2.getText());
-        choices.add(answerString3.getText());
-        choices.add(answerString4.getText());
+        Collections.addAll(choices, answerString1.getText(), answerString2.getText(),
+                answerString3.getText(), answerString4.getText());
         SqlCaller.addQuestionToDB(questionId, question, correctAnswer, choices);
-        System.out.println("Id = " + questionId + "\nQuestion = " + question + "\nCorrect answer = " + correctAnswer + "\nChoices = " + choices);
+        clearSelections();
+        confirmSubmission();
     }
-
+    public void confirmSubmission(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Question Submitted");
+        alert.setHeaderText("Submitted");
+        alert.setContentText("Your question has been submitted to the database.");
+        alert.showAndWait();
+    }
+    public void clearSelections(){
+        List<TextField> textFields = new ArrayList<>(Arrays.asList(questionString, answerString1, answerString2,
+                answerString3, answerString4));
+        for (TextField tf : textFields){
+            tf.clear();
+        }
+        correctAnswerChoice.selectToggle(null);
+    }
     public String getCorrectAnswer(){
         RadioButton selectedRadio = (RadioButton)correctAnswerChoice.getSelectedToggle();
         String radioId = selectedRadio.getId();

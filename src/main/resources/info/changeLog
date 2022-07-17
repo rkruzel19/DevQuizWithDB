@@ -8,3 +8,7 @@ log created 6/22/20
 - handled input in quizSelection. Created label that notifies user if input is good or bad
 - created amount variable in quizSelection to make verifying input possible.
 - handled error in quiz if you hit submit without choosing an answer. Label informs user
+
+7/16/22
+- In the Add Question page, on submission now clears all text fields, the radio toggle, and prompts the
+  user that the question has been submitted.

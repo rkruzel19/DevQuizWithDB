@@ -7,6 +7,39 @@
 
 - check classes to look for optimization
 
+7/15/22
+- Add Question Page
+    - clear fields when submitted
+    - confirmation message
+    - space between radio button and text field
+    - improve styling
+- Quiz Selection Page
+    - remove java label
+    - space between begin quiz and all questions buttons
+    - remove Verify button and have begin quiz button handle verification process
+    - improve styling
+- Quiz Page
+    - remove unnecessary info from left panel
+    - space between test and home buttons
+    - make radio buttons smaller
+    - about that styling...
+- General
+    - turn it into a software dev study guide quiz
+    - add sections/tags (java, js, angular, react, agile, TDD, concepts, languages, etc)
+    - DB manager
+        - see all questions/answers, correct answer hidden at first
+        - remove questions
+        - no updating questions. if you want to, remove then add new question
+    - Should it only be multiple choice?
+        - different types of questions?
+        - pictures?
+        - how to implement true/false questions?
+            - questions right now are set for 4 answer choices
+
+7/16/22
+    - Add Question
+        - bugs when adding fields with apostrophes. check for other unique characters (slash, quote, etc.)
+
 
 
 
