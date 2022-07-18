@@ -1,11 +1,14 @@
 package app.controllers;
 
+import app.dao.Category;
 import app.dao.Question;
 import app.services.SceneBuilder;
 import app.services.SqlCaller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -38,8 +41,15 @@ public class AddQuestionController implements Initializable, Controller {
     TextField answerString3;
     @FXML
     TextField answerString4;
+    @FXML
+    GridPane categories;
+    @FXML
+    ToggleGroup categoryChoice;
+
+
 
     SceneBuilder sb;
+
 
     public void backToHome() throws Exception {
         sb.setNewScene((Stage)cancelButton.getScene().getWindow(), "welcome");
@@ -52,15 +62,23 @@ public class AddQuestionController implements Initializable, Controller {
         List<String> choices = new ArrayList<>();
         Collections.addAll(choices, answerString1.getText(), answerString2.getText(),
                 answerString3.getText(), answerString4.getText());
-        SqlCaller.addQuestionToDB(questionId, question, correctAnswer, choices);
-        clearSelections();
+        Category category = getChosenCategory();
+        SqlCaller.addQuestionToDB(questionId, question, correctAnswer, choices, category);
         confirmSubmission();
+        clearSelections();
     }
+
+    public Category getChosenCategory(){
+        RadioButton selectedRadio = (RadioButton)categoryChoice.getSelectedToggle();
+        return Category.valueOf(selectedRadio.getId().toUpperCase());
+    }
+
     public void confirmSubmission(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Question Submitted");
         alert.setHeaderText("Submitted");
-        alert.setContentText("Your question has been submitted to the database.");
+        alert.setContentText("Your question has been submitted to the database in the "
+                             + getChosenCategory().name() + " category.");
         alert.showAndWait();
     }
     public void clearSelections(){
@@ -70,6 +88,7 @@ public class AddQuestionController implements Initializable, Controller {
             tf.clear();
         }
         correctAnswerChoice.selectToggle(null);
+        categoryChoice.selectToggle(null);
     }
     public String getCorrectAnswer(){
         RadioButton selectedRadio = (RadioButton)correctAnswerChoice.getSelectedToggle();
@@ -83,6 +102,17 @@ public class AddQuestionController implements Initializable, Controller {
         }
     }
 
+    public void setUpCategories(){
+        int column = 0;
+        for(Category category : Category.values()){
+            RadioButton radioButton = new RadioButton(category.name());
+            radioButton.setId(category.name().toLowerCase());
+            radioButton.setToggleGroup(categoryChoice);
+            categories.add(radioButton, column, 0);
+            column++;
+        }
+    }
+
     @Override
     public void initData(Object parameter) {
 
@@ -91,5 +121,6 @@ public class AddQuestionController implements Initializable, Controller {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sb = new SceneBuilder();
+        setUpCategories();
     }
 }

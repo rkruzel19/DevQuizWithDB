@@ -1,5 +1,6 @@
 package app.services;
 
+import app.dao.Category;
 import app.dao.Question;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class SqlCaller {
 
@@ -24,7 +26,8 @@ public class SqlCaller {
                 String question = resultSet.getObject("question").toString();
                 String correctAnswer = resultSet.getObject("correctAnswer").toString();
                 List<String> choices = getQuestionChoices(questionId);
-                Question questionToAdd = new Question(questionId, question, choices, correctAnswer);
+                Category category = Category.valueOf(resultSet.getObject("category").toString());
+                Question questionToAdd = new Question(questionId, question, choices, correctAnswer, category);
                 questionList.add(questionToAdd);
             }
         } catch (SQLException throwables) {
@@ -41,9 +44,10 @@ public class SqlCaller {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 questionToAdd.setId(questionId);
-                questionToAdd.setQuery(resultSet.getObject("question").toString());
+                questionToAdd.setQuestionString(resultSet.getObject("question").toString());
                 questionToAdd.setCorrectAnswer(resultSet.getObject("correctAnswer").toString());
                 questionToAdd.setAnswers(getQuestionChoices(questionId));
+                questionToAdd.setCategory(Category.valueOf(resultSet.getObject("category").toString()));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -69,10 +73,10 @@ public class SqlCaller {
         return choices;
     }
 
-    public static void addQuestionToDB(int id, String question, String correctAnswer, List<String> choices){
+    public static void addQuestionToDB(int id, String question, String correctAnswer, List<String> choices, Category category){
 
         try {
-            String sql = "INSERT INTO quizdb.question (`id`, `question`, `correctAnswer`, `choicesId`) VALUES ('" + id + "', '" + question + "', '" + correctAnswer + "', '" + id + "')";
+            String sql = "INSERT INTO quizdb.question (`id`, `question`, `correctAnswer`, `choicesId`, `category`) VALUES ('" + id + "', '" + question + "', '" + correctAnswer + "', '" + id + "', '" + category.toString() + "')";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             int result = preparedStatement.executeUpdate();
             con.close();

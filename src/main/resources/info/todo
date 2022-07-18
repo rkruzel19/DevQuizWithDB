@@ -48,6 +48,10 @@
         - amount of Q's in category displayed
         - can then select All questions or a # in the range of all clicked categories sum of questions
             - if a # in range is chosen, a random amount of Q's from each category should be given
+    - Categories:
+        - Java, JS, React, Angluar, Node, General, HTML, CSS (to start)
+        - Use enums and give the users only options from the enums class to choose as a category
+            - Means for now users can't add new categories, just has to be added to enums in the code
 
 
 

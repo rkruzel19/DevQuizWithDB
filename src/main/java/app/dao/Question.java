@@ -6,22 +6,25 @@ import java.util.List;
 public class Question {
 
     private int id;
-    private String query;
+    private String questionString;
     private String correctAnswer;
     private List<String> answers;
+    private Category category;
 
     public Question() {
         id = 0;
-        query = "";
+        questionString = "";
         answers = new ArrayList<>();
         correctAnswer = "";
+        category = null;
     }
 
-    public Question(int id, String query, List<String> answers, String correctAnswer) {
+    public Question(int id, String questionString, List<String> answers, String correctAnswer, Category category) {
         this.id = id;
-        this.query = query;
+        this.questionString = questionString;
         this.correctAnswer = correctAnswer;
         this.answers = answers;
+        this.category = category;
     }
 
     public int getId() {
@@ -32,12 +35,12 @@ public class Question {
         this.id = id;
     }
 
-    public String getQuery() {
-        return query;
+    public String getQuestionString() {
+        return questionString;
     }
 
-    public void setQuery(String query) {
-        this.query = query;
+    public void setQuestionString(String questionString) {
+        this.questionString = questionString;
     }
 
     public String getCorrectAnswer() {
@@ -56,13 +59,22 @@ public class Question {
         this.answers = answers;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
                 "id=" + id +
-                ", query='" + query + '\'' +
+                ", questionString='" + questionString + '\'' +
                 ", correctAnswer='" + correctAnswer + '\'' +
                 ", answers=" + answers +
+                ", category=" + category +
                 '}';
     }
 }

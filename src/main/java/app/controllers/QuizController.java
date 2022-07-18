@@ -64,7 +64,7 @@ public class QuizController implements Initializable, Controller {
                 currentQuestionNumber++;
                 currentQuestion = quizList.get(currentQuestionNumber);
                 setQuestionNumber(currentQuestionNumber);
-                setQuestionText(currentQuestion.getQuery());
+                setQuestionText(currentQuestion.getQuestionString());
                 setChoices(currentQuestion.getAnswers());
                 errorLabel.setText("");
             }
@@ -132,7 +132,7 @@ public class QuizController implements Initializable, Controller {
         // Set first question
         currentQuestion = getQuestionFromList(currentQuestionNumber);
         setQuestionNumber(currentQuestionNumber);
-        setQuestionText(currentQuestion.getQuery());
+        setQuestionText(currentQuestion.getQuestionString());
         setChoices(currentQuestion.getAnswers());
         this.numberOfQuestions.setText(quizList.size() + " questions");
     }

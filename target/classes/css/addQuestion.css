@@ -16,6 +16,10 @@
     -fx-spacing: 10px;
 }
 
+#categories{
+    -fx-alignment: center;
+}
+
 /*.radio-button .radio{
     -fx-background-color: blue;
 }*/
@@ -23,4 +27,12 @@
 .label{
     -fx-font-size: 20px;
     -fx-font-weight: bold;
+}
+
+#java{
+    -fx-background-color: blue;
+}
+
+#css{
+    -fx-background-color: yellow;
 }
