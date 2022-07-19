@@ -12,6 +12,11 @@
     -fx-font-size: 20px;
 }
 
+#allQuestions{
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
 #selectionLabels{
     -fx-alignment: center;
     -fx-font-size: 40px;
@@ -26,6 +31,16 @@
     -fx-alignment: center;
     -fx-font-size: 30px;
     /*-fx-spacing: 30px;*/
+}
+
+#leftPanel{
+    -fx-pref-width: 400px;
+    -fx-alignment: center;
+    /*-fx-spacing: 20px;*/
+}
+
+#categories{
+    -fx-alignment: center;
 }
 
 #inputField{

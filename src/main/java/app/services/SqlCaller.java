@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -97,6 +98,21 @@ public class SqlCaller {
             exception.printStackTrace();
         }
 
+    }
+
+    public static HashMap<String, Integer> getEachCategorySize(){
+        String sql = "SELECT category, COUNT(*) FROM quizdb.question GROUP BY category";
+        HashMap<String, Integer> categories = new HashMap<>();
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                categories.put(resultSet.getString(1), resultSet.getInt(2));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return categories;
     }
 
     public static int getDBSize(){

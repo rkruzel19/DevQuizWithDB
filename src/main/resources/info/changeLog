@@ -18,3 +18,26 @@ log created 6/22/20
 - Quiz selection page now verifies input on Begin Quiz
 - Smaller radios on Quiz page
 - Space between radios and text box on Add Question page
+
+7/19/22
+- Implemented Categories
+    - Created an enum class of available categories
+    - Makes it so user can only add to and select from the available categories
+    - Changed the Question dao to include a Category
+    - Created Category column in SQL database (quizdb)
+- Add Question Page
+    - Displays a list of the Categories you can choose from
+        - Display is a GridPane with Radio Buttons added in it for each Category
+        - Each option has a radio button with a toggle group so user can only choose one
+        - Available categories are pulled from the enum Category class so the options are created dynamically
+          depending on the number of enum options in Category
+    - On submit, Category is properly stored in the db
+- Quiz Selection Page
+    - Gives user a list of Categories to choose from
+        - List is generated from Category enum
+        - Can choose multiple categories
+            - Selected radios determine how many questions are available. (For display only. Code still needs implementation)
+        - Each Category has the number of question available displayed next to the Category name
+            - Gotten from a SQL GroupBy clause
+    - All Questions now has a label next to it with the total questions in DB
+

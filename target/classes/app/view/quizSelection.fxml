@@ -3,22 +3,31 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="app.controllers.QuizSelectionController">
     <center>
-        <VBox id="quizDetails">
-            <VBox  id="selectionLabels">
-                <Label fx:id="totalQsInDatabase"/>
+        <HBox>
+            <VBox id="leftPanel">
+                <GridPane fx:id="categories" />
             </VBox>
-            <VBox id="questionsInput">
-                <Label text="How many questions?"/>
-                <HBox id="inputField">
-                    <TextField fx:id="numberOfQuestions"/>
-                </HBox>
-                <Label fx:id="errorLabel"/>
-                <VBox id="startButtons">
-                    <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
-                    <Button text="All Questions" onAction="#beginQuizAllQuestions"/>
+            <VBox id="quizDetails">
+                <VBox  id="selectionLabels">
+                    <Label fx:id="totalOfSelectedCategories"/>
                 </VBox>
+                <VBox id="questionsInput">
+                    <Label text="How many questions?"/>
+                    <HBox id="inputField">
+                        <TextField fx:id="numberOfQuestions"/>
+                    </HBox>
+                    <Label fx:id="errorLabel"/>
+                    <VBox id="startButtons">
+                        <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
+                        <HBox id="allQuestions">
+                            <Button text="All Questions" onAction="#beginQuizAllQuestions"/>
+                            <Label fx:id="totalQuestions" />
+                        </HBox>
+
+                    </VBox>
+                </VBox>
+                <Button fx:id="homeButton" text="Home" onAction="#returnHome"/>
             </VBox>
-            <Button fx:id="homeButton" text="Home" onAction="#returnHome"/>
-        </VBox>
+        </HBox>
     </center>
 </BorderPane>
