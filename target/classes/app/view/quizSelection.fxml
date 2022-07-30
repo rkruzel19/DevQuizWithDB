@@ -8,17 +8,20 @@
                 <GridPane fx:id="categories" />
             </VBox>
             <VBox id="quizDetails">
-                <VBox  id="selectionLabels">
-                    <Label fx:id="totalOfSelectedCategories"/>
+                <VBox id="selectionLabels">
                 </VBox>
                 <VBox id="questionsInput">
                     <Label text="How many questions?"/>
                     <HBox id="inputField">
                         <TextField fx:id="numberOfQuestions"/>
+                        <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
                     </HBox>
                     <Label fx:id="errorLabel"/>
-                    <VBox id="startButtons">
-                        <Button fx:id="beginQuizButton" text="Begin Quiz" onAction="#beginQuiz"/>
+                    <VBox id="startAllButtons">
+                        <HBox id="selectedQuestions">
+                            <Button text="All Selected Questions" onAction="#beginQuizAllSelected"/>
+                            <Label fx:id="totalOfSelectedCategories" />
+                        </HBox>
                         <HBox id="allQuestions">
                             <Button text="All Questions" onAction="#beginQuizAllQuestions"/>
                             <Label fx:id="totalQuestions" />

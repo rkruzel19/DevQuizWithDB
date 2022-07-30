@@ -14,6 +14,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,12 +44,13 @@ public class QuizSelectionController implements Initializable, Controller {
     @FXML
     Label totalQuestions = new Label();
     int totalSelected = 0;
+    List<String> categoriesSelected = new ArrayList<>();
 
 
     public void beginQuiz() throws Exception{
         verifyInput();
-        if(amount > 0){
-            populateQuizQuestions(amount);
+        if(amount > 0 && categoriesSelected.size() != 0){
+            quizQuestions = QuizQuestionsGenerator.generateXQuestionsFromSelected(categoriesSelected, amount);
             sb.setNewSceneWithParameters((Stage) beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
         }
     }
@@ -62,22 +64,28 @@ public class QuizSelectionController implements Initializable, Controller {
     }
 
     public void verifyInput(){
-        if(InputHandler.verifyNumberOfQs(numberOfQuestions.getText())){
+        if(InputHandler.verifyNumberOfQs(numberOfQuestions.getText(), totalSelected)){
             amount = receiveInput();
         } else {
-            errorLabel.setText("Must enter valid input (1-" + totalSelected + ") and click verify input");
+            errorLabel.setText("Must enter valid input (1-" + totalSelected + ")");
             amount = 0;
             errorLabel.setTextFill(Color.RED);
         }
     }
 
-    public void populateQuizQuestions(int numberOfQuestions){
-        quizQuestions = QuizQuestionsGenerator.generateXQuestions(numberOfQuestions);
-    }
-
     public void beginQuizAllQuestions() throws Exception{
         quizQuestions = QuizQuestionsGenerator.generateEntireQuestionList();
         sb.setNewSceneWithParameters((Stage)beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
+    }
+
+    public void beginQuizAllSelected() throws Exception{
+        if(categoriesSelected.size() == 0){
+            errorLabel.setText("Must choose at least 1 category from the left");
+            errorLabel.setTextFill(Color.RED);
+        } else {
+            quizQuestions = QuizQuestionsGenerator.generateAllSelectedList(categoriesSelected);
+            sb.setNewSceneWithParameters((Stage) beginQuizButton.getScene().getWindow(), "quiz", quizQuestions);
+        }
     }
 
     public void setUpCategories(){
@@ -89,23 +97,25 @@ public class QuizSelectionController implements Initializable, Controller {
             }
             RadioButton radioButton = new RadioButton(category.name() + "  ( " + questionCount + " )");
             radioButton.setId(category.name().toLowerCase());
-            radioButton = clickedListener(radioButton, questionCount);
+            radioButton = clickedListener(radioButton, questionCount, category.name());
             categories.add(radioButton, 0, row);
             row++;
         }
     }
 
-    public RadioButton clickedListener(RadioButton radioButton, int questionCount){
+    public RadioButton clickedListener(RadioButton radioButton, int questionCount, String category){
         radioButton.selectedProperty().addListener((observable, wasSelected, isSelected) -> {
             if (isSelected){
                 totalSelected += questionCount;
                 totalOfSelectedCategories.setText(totalSelected + " questions available");
+                categoriesSelected.add(category);
             }
         });
         radioButton.selectedProperty().addListener((observable, wasSelected, isSelected) -> {
             if (wasSelected){
                 totalSelected -= questionCount;
                 totalOfSelectedCategories.setText(totalSelected + " questions available");
+                categoriesSelected.remove(category);
             }
         });
         return radioButton;

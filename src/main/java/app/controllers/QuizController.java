@@ -4,10 +4,7 @@ import app.dao.Question;
 import app.services.SceneBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -20,6 +17,8 @@ public class QuizController implements Initializable, Controller {
     Button submitAnswerButton;
     @FXML
     Label questionNumber;
+    @FXML
+    Label questionCategory;
     @FXML
     Label questionText;
     @FXML
@@ -64,6 +63,7 @@ public class QuizController implements Initializable, Controller {
                 currentQuestionNumber++;
                 currentQuestion = quizList.get(currentQuestionNumber);
                 setQuestionNumber(currentQuestionNumber);
+                setQuestionCategory(currentQuestion.getCategory().name());
                 setQuestionText(currentQuestion.getQuestionString());
                 setChoices(currentQuestion.getAnswers());
                 errorLabel.setText("");
@@ -85,6 +85,10 @@ public class QuizController implements Initializable, Controller {
         this.questionText.setText(questionText);
     }
 
+    public void setQuestionCategory(String category){
+        this.questionCategory.setText((category));
+    }
+
     public void setChoices(List<String> choices){
         option1.setText(choices.get(0));
         option2.setText(choices.get(1));
@@ -99,8 +103,19 @@ public class QuizController implements Initializable, Controller {
     public void updateScore(){
         RadioButton selectedRadioButton = (RadioButton) answerList.getSelectedToggle();
         boolean isCorrect = checkAnswer(currentQuestion.getCorrectAnswer(), selectedRadioButton.getText());
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Question Result");
+
+
         if(isCorrect){
+            alert.setHeaderText("Correct!!");
+            alert.setContentText("You got it right!");
+            alert.showAndWait();
             correctAnswers++;
+        } else {
+            alert.setHeaderText("Wrong...");
+            alert.setContentText("Try harder next time.\nThe correct answer is: \"" + currentQuestion.getCorrectAnswer() + "\"");
+            alert.showAndWait();
         }
         questionsAnswered++;
         setScore();
@@ -132,6 +147,7 @@ public class QuizController implements Initializable, Controller {
         // Set first question
         currentQuestion = getQuestionFromList(currentQuestionNumber);
         setQuestionNumber(currentQuestionNumber);
+        setQuestionCategory(currentQuestion.getCategory().name());
         setQuestionText(currentQuestion.getQuestionString());
         setChoices(currentQuestion.getAnswers());
         this.numberOfQuestions.setText(quizList.size() + " questions");

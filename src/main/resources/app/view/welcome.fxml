@@ -7,7 +7,6 @@
     <left>
         <VBox id="leftMenu">
             <Button fx:id="addQuestionButton" styleClass="leftButtons" text="Add Question" onAction="#addQuestionToDB" />
-            <Button styleClass="leftButtons" text="TEST DB" />
         </VBox>
     </left>
     <center>

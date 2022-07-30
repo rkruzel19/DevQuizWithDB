@@ -9,30 +9,34 @@ import java.util.Random;
 public class QuizQuestionsGenerator {
 
     public static List<Question> generateEntireQuestionList(){
-        return SqlCaller.getAllQuestions();
+        return randomizeQuestions(SqlCaller.getAllQuestions());
     }
 
-    public static List<Question> generateXQuestions(int numberOfQs){
-        List<Question> questionList = new ArrayList<>();
-        List<Integer> questionIds = new ArrayList<>();
-        for(int i = 1; i <= numberOfQs; i++){
-            int questionId = getRandomQuestionId();
-            while (duplicateQuestion(questionIds, questionId)){
-                questionId = getRandomQuestionId();
+    public static List<Question> generateAllSelectedList(List<String> categories){
+        return randomizeQuestions(SqlCaller.getAllSelectedQuestions(categories));
+    }
+
+    public static List<Question> generateXQuestionsFromSelected(List<String> categories, int numberOfQs){
+        return randomizeQuestions(generateAllSelectedList(categories)).subList(0, numberOfQs);
+    }
+    public static List<Question> randomizeQuestions(List<Question> questions){
+        List<Question> randomizedQuestions = new ArrayList<>();
+        List<Integer> questionIndexList = new ArrayList<>();
+        for(int i = 0; i < questions.size(); i++){
+            int questionIndex = getRandomQuestionIndex(questions.size());
+            while (questionIndexList.contains(questionIndex)){
+                questionIndex = getRandomQuestionIndex((questions.size()));
             }
-            questionIds.add(questionId);
-            questionList.add(SqlCaller.getQuestionById(questionId));
+            questionIndexList.add(questionIndex);
+            randomizedQuestions.add(questions.get(questionIndex));
         }
-        return questionList;
+        return randomizedQuestions;
     }
 
-    public static int getRandomQuestionId(){
-        return new Random().nextInt(SqlCaller.getDBSize()) + 1;
+    public static int getRandomQuestionIndex(int maxIndex){
+        return new Random().nextInt(maxIndex);
     }
 
-    public static boolean duplicateQuestion(List<Integer> questionIds, Integer questionId){
-        return questionIds.contains(questionId);
-    }
 
 }
 

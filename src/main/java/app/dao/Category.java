@@ -2,11 +2,10 @@ package app.dao;
 
 public enum Category {
     JAVA,
-    JS,
-    REACT,
-    ANGULAR,
+    JAVASCRIPT,
     NODE,
     GENERAL,
+    ANGULAR,
     HTML,
     CSS
 }

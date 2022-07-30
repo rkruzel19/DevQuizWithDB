@@ -1,5 +1,5 @@
 .root{
-    -fx-background-color: red;
+    -fx-background-color: burlywood;
 }
 
 #centerContent{
@@ -18,6 +18,8 @@
 
 #categories{
     -fx-alignment: center;
+    -fx-hgap: 20px;
+    -fx-font-weight: bold;
 }
 
 /*.radio-button .radio{
@@ -29,10 +31,11 @@
     -fx-font-weight: bold;
 }
 
+/*
 #java{
     -fx-background-color: blue;
 }
 
 #css{
     -fx-background-color: yellow;
-}
+}*/

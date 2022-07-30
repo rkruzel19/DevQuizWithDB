@@ -12,6 +12,7 @@
         <VBox id="quizCenter">
             <VBox id="questionLabel">
                 <Label fx:id="questionNumber" />
+                <Label fx:id="questionCategory" />
                 <Label fx:id="questionText" wrapText="true" />
             </VBox>
 
@@ -28,7 +29,6 @@
                 <Button fx:id="submitAnswerButton" text="Submit" onAction="#submitAnswerButton"/>
             </StackPane>
             <HBox id="bottomBtns">
-                <Button text="test" onAction="#printQuestions"/>
                 <Button fx:id="homeButton" text="home" onAction="#backToWelcome"/>
             </HBox>
         </VBox>

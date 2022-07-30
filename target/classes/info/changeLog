@@ -34,4 +34,10 @@ log created 6/22/20
     - On submit, Category is properly stored in the db
 - Quiz Selection Page
     - Gives user a list of Categories to choose from
-        - list is genera
+        - List is generated from Category enum
+        - Can choose multiple categories
+            - Selected radios determine how many questions are available. (For display only. Code still needs implementation)
+        - Each Category has the number of question available displayed next to the Category name
+            - Gotten from a SQL GroupBy clause
+    - All Questions now has a label next to it with the total questions in DB
+

@@ -1,9 +1,9 @@
 .root{
-    -fx-background-color: blue;
+    -fx-background-color: aquamarine;
 }
 
 #leftMenu{
-    -fx-background-color: yellow;
+    -fx-background-color: chocolate;
     -fx-min-width: 300px;
     -fx-spacing: 200px;
     -fx-alignment: center;
@@ -26,7 +26,7 @@
 }
 
 #startQuizButton{
-    -fx-background-color: purple;
+    -fx-background-color: violet;
     -fx-font-size: 30px;
     -fx-padding: 30px;
     -fx-font-weight: bold;

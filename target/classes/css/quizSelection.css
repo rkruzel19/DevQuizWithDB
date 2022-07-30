@@ -1,5 +1,5 @@
 .root{
-    -fx-background-color: gray;
+    -fx-background-color: skyblue;
 }
 
 #quizDetails{
@@ -17,12 +17,17 @@
     -fx-spacing: 20px;
 }
 
+#selectedQuestions{
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
 #selectionLabels{
     -fx-alignment: center;
     -fx-font-size: 40px;
 }
 
-#startButtons{
+#startAllButtons{
     -fx-spacing: 15px;
     -fx-alignment: center;
 }
@@ -41,6 +46,9 @@
 
 #categories{
     -fx-alignment: center;
+    -fx-vgap: 10px;
+    -fx-font-weight: bold;
+
 }
 
 #inputField{
